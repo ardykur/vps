@@ -1,0 +1,21 @@
+version: "3.8"
+
+services:
+  ubuntu-gui:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: ardy28/ubuntu-gui-anydesk-office:latest
+    container_name: ubuntu-gui
+    privileged: true
+    shm_size: "2gb"
+    ports:
+      - "6080:6080"
+      - "5901:5901"
+      - "7070:7070"
+    volumes:
+      - ubuntu_home:/home/ardy28
+    restart: unless-stopped
+
+volumes:
+  ubuntu_home:
